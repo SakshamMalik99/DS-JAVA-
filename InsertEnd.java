@@ -4,7 +4,6 @@ public class InsertEnd {
     class Node {
         int data;
         Node next;
-
         public Node(int data) {
             this.data = data;
             this.next = null;
@@ -12,7 +11,6 @@ public class InsertEnd {
     }
 
     public Node head = null;
-
     public void inEnd(int data) {
         Node temp = new Node(data);
         if (head == null) {
@@ -27,14 +25,10 @@ public class InsertEnd {
     }
 
     public void display() {
-        Node current = head;
-        if (head == null) {
-            System.out.println("List is Empty");
-            return;
-        }
-        while (current != null) {
-            System.out.print(current.data + " ");
-            current = current.next;
+        Node cur = head;
+        while (cur != null) {
+            System.out.print(cur.data + " ");
+            cur = cur.next;
         }
         System.out.println();
     }
