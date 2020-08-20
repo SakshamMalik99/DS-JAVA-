@@ -1,0 +1,90 @@
+class Node  {
+Node next = null;
+int val = 0;
+public Node(int v) {
+    val = v;
+   }
+  }
+class DesignCircularDeque {
+Node head = null;
+Node tail = null;
+int curr_size = 0;
+int size;
+public DesignCircularDeque(int k) {
+    size = k;
+}
+public boolean insertFront(int value) {
+     if (curr_size == size) {
+        return false;
+    } else if (curr_size == 0) {
+        Node newNode = new Node(value);
+        head = newNode;
+        tail = newNode;
+    } else {
+        Node newNode = new Node(value);
+        newNode.next = head;
+        head = newNode;
+    }
+    curr_size++;
+    return true;
+}
+public boolean insertLast(int value) {
+    if (curr_size == size) {
+        return false;
+    } else if (curr_size == 0) {
+        Node newNode = new Node(value);
+        head = newNode;
+        tail = newNode;
+    } else {
+        Node newNode = new Node(value);
+        tail.next = newNode;
+        tail = newNode;
+    }
+    curr_size++;
+    return true;
+}
+public boolean deleteFront() {
+    if (head == null || curr_size == 0) return false;
+    if (head.next == null) {
+        head = null;
+        tail = null;
+    } else {
+        head = head.next;
+    }
+    curr_size--;
+    return true;
+}
+public boolean deleteLast() {
+    if (head == null || curr_size == 0) {
+        return false;
+    }
+    if (head.next == null) {
+        head = null;
+        tail = null;
+    } else {
+         Node temp = head;
+    while (temp.next.next != null) {
+        temp = temp.next;
+    }
+    tail = temp;
+    tail.next = null;
+    }
+   
+    curr_size--;
+    return true;
+}
+public int getFront() {
+    if (head!=null) return head.val;
+    return -1;
+}
+public int getRear() {
+    if (tail!=null) return tail.val;
+    return -1;
+}
+public boolean isEmpty() {
+    return curr_size == 0;
+}
+public boolean isFull() {
+ return curr_size == size;   
+}
+}
